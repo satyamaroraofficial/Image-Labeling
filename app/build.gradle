@@ -19,6 +19,10 @@ android {
         noCompress "tflite"
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', "ApiKey", MyAwesomeKey
+            resValue 'string', "api_key", MyAwesomeKey
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -46,6 +50,8 @@ dependencies {
     implementation "ai.fritz:vision:4.2.0"
     implementation "androidx.camera:camera-core:${camerax_version}"
     implementation "androidx.camera:camera-camera2:${camerax_version}"
+
+    implementation 'ai.fritz:vision-labeling-model-fast:2.0.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
